@@ -47,6 +47,16 @@ async function run() {
     })
     //POST DATA END
 
+    //GET DATA
+    app.get('/erazone', async (req, res) =>{
+        const result = await erazoneCollection.find().toArray();
+        res.send(result);
+        console.log(result);
+        
+    })
+    //GET DATA END
+
+
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
