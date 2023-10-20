@@ -19,7 +19,7 @@ app.listen(port, () => {
 //UHDDPuseZ0KrTra3
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = "mongodb+srv://ashikurzaman774:UHDDPuseZ0KrTra3@cluster0.q0gttvx.mongodb.net/?retryWrites=true&w=majority";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -55,6 +55,15 @@ async function run() {
         
     })
     //GET DATA END
+
+    //DELETE DATA
+    app.delete('/erazone/:id', async (req, res) =>{
+        const id = req.params.id;
+        const result = await erazoneCollection.deleteOne({_id: new ObjectId (id)});
+        res.send(result);
+        console.log(result);
+    })
+    //DELETE DATA end
 
 
     // Send a ping to confirm a successful connection
