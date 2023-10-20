@@ -72,6 +72,18 @@ async function run() {
         res.send(result);
         console.log(result);
     })
+
+    app.put('/erazone/:id', async (req, res) =>{
+      const id = req.params.id;
+      const data = req.body;
+      const result = await erazoneCollection.updateOne({_id: new ObjectId (id)}, {
+        $set: data
+      });
+      res.send(result);
+      console.log(result);
+    })
+
+ 
     //UPDATE DATA end
 
 
